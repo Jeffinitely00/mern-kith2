@@ -1,26 +1,33 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import "./App.css";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import { sampleProducts } from "./data";
+import { Outlet } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
-    <div>
-      <header>Amazion</header>
+    <div className="d-flex flex-column vh-100">
+      <header>
+        <Navbar bg="light" variant="light" expand="lg">
+          <Container>
+            <Navbar.Brand>KITH2</Navbar.Brand>
+          </Container>
+          <Nav>
+            <a href="/cart" className="nav-link">
+              Cart
+            </a>
+            <a href="/signin" className="nav-link">
+              Sign In
+            </a>
+          </Nav>
+        </Navbar>
+      </header>
       <main>
-        <ul>
-          {sampleProducts.map((product) => (
-            <li key={product.slug}>
-              <img src={product.image} alt={product.name} className='product-image'/>
-              <h2>{product.name}</h2>
-              <p>${product.price}.00</p>
-            </li>
-          ))}
-        </ul>
+        <Container className="mt-3">
+          <Outlet />
+        </Container>
       </main>
-      <footer>All rights reserved</footer>
+      <footer>
+        <div className="text-center">All rights reserved</div>
+      </footer>
     </div>
   );
 }
