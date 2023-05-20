@@ -1,1 +1,1 @@
-# TypeScript MERN AMAZION App
+# TypeScript MERN KITH2 App
