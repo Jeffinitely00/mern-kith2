@@ -13,5 +13,9 @@
 }
 
 .rating span {
-  color:rgb(36, 36, 36);
+  color:rgb(87, 87, 87);
+}
+
+img.large {
+  max-width: 100%;
 }
