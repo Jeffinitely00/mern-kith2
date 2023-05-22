@@ -1,6 +1,8 @@
-import { Product } from "./types/Product";
+import bcrypt from 'bcryptjs'
+import { User } from './models/userModel'
+import { Product } from './models/productModel'
 
-export const sampleProducts:Product[] = [
+export const sampleProducts: Product[] = [
     {
         name: 'Kith Cupro Linen Thompson Crossover Shirt',
         slug: 'kith-cupro-linen-thompson-crossover-shirt',
@@ -50,3 +52,18 @@ export const sampleProducts:Product[] = [
         description: 'The Jacquard Faille Cedar Short is made from a woven jacquard fabric, with Kith script logo branding woven throughout. It has an elasticated, drawcord adjustable waistband, and Kith branded hardware, finished with secure zippered front and back pockets.'
     },
 ]
+
+export const sampleUsers: User[] = [
+    {
+      name: 'Joe',
+      email: 'admin@example.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: true,
+    },
+    {
+      name: 'John',
+      email: 'user@example.com',
+      password: bcrypt.hashSync('123456'),
+      isAdmin: false,
+    },
+  ]
