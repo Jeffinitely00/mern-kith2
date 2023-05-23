@@ -1,4 +1,4 @@
-# TypeScript MERN KITH2 App
+<h1 align="center">TypeScript MERN KITH2 App</h1>
 
 <h1 align="center">Hi 👋, I'm Jeffrey Lim</h1>
 <h3 align="center">A passionate developer from Dallas, Texas</h3>
