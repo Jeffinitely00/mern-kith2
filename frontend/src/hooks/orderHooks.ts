@@ -9,7 +9,7 @@ export const useGetOrderDetailsQuery = (id: string) =>
     queryFn: async () => (await apiClient.get<Order>(`api/orders/${id}`)).data,
   })
 
-  export const useGetPaypalClientIdQuery = () =>
+export const useGetPaypalClientIdQuery = () =>
   useQuery({
     queryKey: ['paypal-clientId'],
     queryFn: async () =>
@@ -44,4 +44,11 @@ export const useCreateOrderMutation = () =>
           order
         )
       ).data,
+  })
+
+export const useGetOrderHistoryQuery = () =>
+  useQuery({
+    queryKey: ['order-history'],
+    queryFn: async () =>
+      (await apiClient.get<Order[]>(`/api/orders/mine`)).data,
   })

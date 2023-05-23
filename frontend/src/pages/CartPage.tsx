@@ -83,7 +83,10 @@ export default function CartPage() {
                     </Col>
                     <Col md={3}>${item.price}</Col>
                     <Col md={2}>
-                      <Button onClick={() =>removeItemHandler(item)}variant={mode}>
+                      <Button
+                        onClick={() => removeItemHandler(item)}
+                        variant={mode}
+                      >
                         <i className="fas fa-trash"></i>
                       </Button>
                     </Col>

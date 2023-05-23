@@ -14,29 +14,29 @@ const initialState: AppState = {
     : null,
 
   mode: localStorage.getItem('mode')
-  ? localStorage.getItem('mode')!
-  : window.matchMedia &&
-    window.matchMedia('(prefers-color-scheme: dark)').matches
-  ? 'dark'
-  : 'light',
-    cart: {
-      cartItems: localStorage.getItem('cartItems')
-        ? JSON.parse(localStorage.getItem('cartItems')!)
-        : [],
-      shippingAddress: localStorage.getItem('shippingAddress')
-        ? JSON.parse(localStorage.getItem('shippingAddress')!)
-        : {},
-      paymentMethod: localStorage.getItem('paymentMethod')
-        ? localStorage.getItem('paymentMethod')!
-        : 'PayPal',
-      itemsPrice: 0,
-      shippingPrice: 0,
-      taxPrice: 0,
-      totalPrice: 0,
-    },
-  }
+    ? localStorage.getItem('mode')!
+    : window.matchMedia &&
+      window.matchMedia('(prefers-color-scheme: dark)').matches
+    ? 'dark'
+    : 'light',
+  cart: {
+    cartItems: localStorage.getItem('cartItems')
+      ? JSON.parse(localStorage.getItem('cartItems')!)
+      : [],
+    shippingAddress: localStorage.getItem('shippingAddress')
+      ? JSON.parse(localStorage.getItem('shippingAddress')!)
+      : {},
+    paymentMethod: localStorage.getItem('paymentMethod')
+      ? localStorage.getItem('paymentMethod')!
+      : 'PayPal',
+    itemsPrice: 0,
+    shippingPrice: 0,
+    taxPrice: 0,
+    totalPrice: 0,
+  },
+}
 
-  type Action =
+type Action =
   | { type: 'SWITCH_MODE' }
   | { type: 'CART_ADD_ITEM'; payload: CartItem }
   | { type: 'CART_REMOVE_ITEM'; payload: CartItem }
@@ -65,16 +65,18 @@ function reducer(state: AppState, action: Action): AppState {
       localStorage.setItem('cartItems', JSON.stringify(cartItems))
 
       return { ...state, cart: { ...state.cart, cartItems } }
-      case 'CART_REMOVE_ITEM': {
-        const cartItems = state.cart.cartItems.filter(
-          (item: CartItem) => item._id !== action.payload._id
-        )
-        localStorage.setItem('cartItems', JSON.stringify(cartItems))
-        return { ...state, cart: { ...state.cart, cartItems } }
-      }
-      case 'CART_CLEAR':
+
+    case 'CART_REMOVE_ITEM': {
+      const cartItems = state.cart.cartItems.filter(
+        (item: CartItem) => item._id !== action.payload._id
+      )
+      localStorage.setItem('cartItems', JSON.stringify(cartItems))
+      return { ...state, cart: { ...state.cart, cartItems } }
+    }
+    case 'CART_CLEAR':
       return { ...state, cart: { ...state.cart, cartItems: [] } }
-      case 'USER_SIGNIN':
+
+    case 'USER_SIGNIN':
       return { ...state, userInfo: action.payload }
     case 'USER_SIGNOUT':
       return {
@@ -99,15 +101,15 @@ function reducer(state: AppState, action: Action): AppState {
           totalPrice: 0,
         },
       }
-      case 'SAVE_SHIPPING_ADDRESS':
-        return {
-          ...state,
-          cart: {
-            ...state.cart,
-            shippingAddress: action.payload,
-          },
-        }
-        case 'SAVE_PAYMENT_METHOD':
+    case 'SAVE_SHIPPING_ADDRESS':
+      return {
+        ...state,
+        cart: {
+          ...state.cart,
+          shippingAddress: action.payload,
+        },
+      }
+    case 'SAVE_PAYMENT_METHOD':
       return {
         ...state,
         cart: { ...state.cart, paymentMethod: action.payload },
