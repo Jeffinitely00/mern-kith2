@@ -22,7 +22,7 @@ export const isAuth = (req: Request, res: Response, next: NextFunction) => {
     const token = authorization.slice(7, authorization.length) // Bearer xxxxx
     const decode = jwt.verify(
       token,
-      process.env.JWT_SECRET || 'somethingsecret'
+      process.env.JWT_SECRET || 'somethingsecret08'
     )
     req.user = decode as {
       _id: string
